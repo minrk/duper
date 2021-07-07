@@ -242,6 +242,7 @@ class Wurlitzer(object):
             flush_thread.join()
             # cleanup pipes
             [os.close(pipe) for pipe in pipes]
+            poller.close()
 
         self.thread = threading.Thread(target=forwarder)
         self.thread.daemon = True
